@@ -37,7 +37,7 @@
         for(int n = 1; n <= 9; n++){
           //段の表示
           for(int m = 1; m <= 9; m++){
-            System.out.print(n + " " + m + "||" + (n * m)+ " ");
+            System.out.print(n + " " + m + "||" +  " ");
           }
           //一つの段が終了しらた改行する
           System.out.println();
