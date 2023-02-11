@@ -16,7 +16,7 @@ public class Main  {
      double hogeDouble = 0.2;
 
       // ④変数 hogeInt を値「100」で上書き
-     hogeInt = 100;
+      hogeInt = 100;
 
      // ⑤変数 hogeString を値「合格」で上書き
      hogeString = "合格";
