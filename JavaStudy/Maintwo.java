@@ -8,7 +8,7 @@ public class Maintwo {
       
     // ② ①で作成した配列の要素数を出力してください。
       //System.out.println("配列arrの要素数…" + arr.length);
-      //System.out.println(country.length);
+      System.out.println(country.length);
 
 
     /* ③下記の値を保持した、要素数3のStringクラスの配列strArrayを作成しなさい。
@@ -17,7 +17,7 @@ public class Maintwo {
      *   3番目の要素に 「ぶどう」 を代入
      */
       //int[] arr = new int[5];
-      String [] strArray = new String[2];
+      String [] strArray = new String[3];
 
       strArray[0] = "りんご";
       strArray[1] = "もも";
