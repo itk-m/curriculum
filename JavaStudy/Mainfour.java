@@ -48,7 +48,9 @@ public class Mainfour {
 
         // ⑤ 「USER_NAME」も「USER_PASSWORD」の値も間違っていた場合。 
        //定数を使用して「 入力情報に誤りがあります。 」と出力してください。
-    
+       else{
+        System.out.println(CONST_MSG_ERROR_INPUT);
+       }
     }
 
 }
