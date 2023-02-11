@@ -9,7 +9,7 @@ public class Main  {
 
      // ②Stringクラスの hogeString という名前の変数を宣言、値「テスト」で初期化
      String hogeString = "テスト";
-     System.out.print(hogeString);
+     System.out.println(hogeString);
 
      // ③下記の処理について、何をしているのかコメントを記入してください
      //少数点を表示。Doubleはクラスメソッド0.2を表示 
