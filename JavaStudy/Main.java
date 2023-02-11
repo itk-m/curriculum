@@ -16,7 +16,7 @@ public class Main  {
 
      // ⑤変数 hogeString を値「合格」で上書き
      hogeString = "合格";
-     
+
 
      // ⑥変数 hogeInt の値を表示
      System.out.println(hogeInt);
@@ -28,6 +28,8 @@ public class Main  {
      //⑧変数 hogeDoubleの値を表示
      System.out.println(hogeDouble);
 
-     
+
   }
+
+  
 }
