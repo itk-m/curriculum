@@ -1,8 +1,11 @@
+
+
 public class Main2 {
   public static void main(String[] args) {
 
     // ①「JAPAN」、「AMERICA」、「KOREA」を要素の値（初期値）とする配列 countryを作成しなさい。
       String country[] = {"JAPAN", "AMERICA", "KOREA" };
+      
     // ② ①で作成した配列の要素数を出力してください。
       //System.out.println("配列arrの要素数…" + arr.length);
       System.out.println(country.length);
@@ -22,6 +25,7 @@ public class Main2 {
 
     // ④ ③で作成した配列の2番目の要素を出力しなさい。
     System.out.println(strArray[1]);
+
     /* ⑤下記の処理について、何をしているのかコメントを記入してください。
      *  [ここへ記述]配列intArrayを作成し、10, 20, 30, 40, 50要素の値を初期化している。
      */
