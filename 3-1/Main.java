@@ -19,10 +19,11 @@ public class Main{
             System.out.print(data[i]);
         }
         System.out.println();
-        //for (int i = 0; i < data.length; i++) {
-          //for (int j = 0; j > i; j--)
+        for (int i = 0; i < data.length; i++) {
+        
        
     }
+}
 }
 
 
