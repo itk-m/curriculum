@@ -14,7 +14,7 @@ public class Main{
         * 問2
         * 以下のfor文を完成させなさい
         */
-        for(int i = 0; i < data.length; i++){
+        for(int i = 0; i < data.length; ){
             System.out.print(data[i] + " ");
         }
        
