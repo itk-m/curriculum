@@ -20,10 +20,15 @@ public class Main{
         }
         System.out.println();
         for (int i = 0; i < 12375; i++) {
-          for (int j = data.length; j > i; j--){
+          for (int j = 0; j > i; j--){
             
+            if(data[i] > data[j]){
+              int box = data[i];
+              data[i] = data[j];
+              data[i] = box;
         }
     }
+  }
     for(int i = 0; i < data.length; i++){
         System.out.print(data[i] + " ");
     }
