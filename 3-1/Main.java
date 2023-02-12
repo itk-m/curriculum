@@ -15,7 +15,7 @@ public class Main{
         * 以下のfor文を完成させなさい
         forはストップさせなかったらずっとループを繰り返す。
         */
-        for(int i = 0; i < data.length; i--){
+        for(int i = 0; i < data.length; i++){
             System.out.print(data[i]);
         }
         System.out.println();
