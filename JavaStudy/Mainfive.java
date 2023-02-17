@@ -34,12 +34,12 @@
         *     8 || 8 | 16 | 24 | 32 | 40 | 48 | 56 | 64 | 72 |
         *     9 || 9 | 18 | 27 | 36 | 45 | 54 | 63 | 72 | 81 |
         */
-        for(int n = 1; n <= 9; n++){
-          //段の表示
-          for(int m = 1; m <= 9; m++){
-            System.out.print(n + " " + m + "||" +  " ");
+        for (int n = 1; n <= 10; n++) {
+          System.out.print(n + " " + "||");
+          for (int m = 1; m <= 10; m++) {
+            System.out.print(" " + (n * m) + " " + "|");
           }
-          //一つの段が終了しらた改行する
+
           System.out.println();
         }
 
