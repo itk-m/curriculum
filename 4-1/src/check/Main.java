@@ -5,10 +5,18 @@ import constants.Constants;
 
 public class Main {
 
+	private String firstName = "松本";
+	private String lastName ="樹";
+	
+	private void printName(){
+	System.out.println(firstName +  lastName);
+	
+	}
 	 
 	 public static void main(String [] args){
 		 
-	  printName("松本","樹");
+				Main name = new Main();
+				name.printName();
 	  	
 	  	  Pet pet = new Pet(Constants.CHECK_CLASS_JAVA,Constants.CHECK_CLASS_HOGE);
 	  	  pet.introduce();
@@ -20,18 +28,5 @@ public class Main {
 	  
 	 } 
 
-
-	
-	 private String firstName;
-	 private String lastName;
-
-	 
-	 
-	 private static void printName(String firstName,String lastName){
-	 String fullname =firstName +  lastName;
-	 System.out.println(fullname);
-	 
-	  
-	 }
 
 }
