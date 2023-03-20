@@ -1,0 +1,103 @@
+@charset "utf-8";
+
+
+
+/*================================
+        479px以下の記述
+ ===============================*/
+@media only screen and (max-width: 479px){
+
+  body{
+    width: 200px;
+  }
+    
+  /*=========================
+      header-class
+  ============================*/
+        .header{
+          width:100% ;
+          height: 250px;
+          padding: 0 70px 0 70px;
+          display: flex;
+          justify-content: center;
+          
+        }/*header*/
+  
+        .header ul{
+          width: 60px;
+          height: 160px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+
+        }/*ul*/  
+  
+        ul li{
+          width: 40px;
+          height: 40px;
+          background-color: #a9004b;
+        }/*li*/
+  
+  /*=========================
+      footer-class
+  ============================*/
+    .footer{
+          width:100% ;
+  
+          height: 100px;
+          background-color: #d98d30;
+            }
+  
+  
+  
+  
+  /*=========================
+      main-class
+  ============================*/
+  
+  
+        .main{
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+        .main .left{
+          width: 100%;
+          height: 100px;
+          background-color:#80bfa8;
+            
+        }/*.main .left*/
+  
+  
+        /*===========================
+            right-
+        ============================*/
+        .main .right{
+          width: 100%;
+          height:200px;
+          padding: 20px 30px;
+          background-color:#8c2727;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }/*.main .right*/
+  
+        .right .right-box{
+          width: 140px;
+          height: 40px;
+          background-color: #ff863f;
+          border: solid 5px #fff;
+        }
+  
+        
+  
+        
+  
+  
+  
+  
+
+
+
+
+}
