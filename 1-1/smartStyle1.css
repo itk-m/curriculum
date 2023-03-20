@@ -1,0 +1,121 @@
+@charset "utf-8";
+
+/*================================
+        767px以下の記述
+ ===============================*/
+
+@media only screen and (max-width: 767px){
+  body{
+    width: 300px;
+  }
+
+  .header{
+    width: 100%;
+  }
+
+  .main{
+    width: 100%;
+  }
+
+
+/*===========================
+     main-right
+===========================*/
+      .main .right{
+        width: 200px;
+          height: 250px;
+          /*background-color:#8c2727;*/
+          
+      }/*.main .right*/
+      
+      .right-box-one{
+        width: 100%;
+        height: 150px;
+        display: flex;
+      }
+      
+      .right-box-one .box-flex-one{
+        width: 125px;
+        height: 100%;
+      }
+      
+      .box-flex-one .part-one{
+        width: 100%;
+        height: 50px;
+        background-color: #dbd400;
+      }
+      
+      .box-flex-one .part-two{
+        width: 100%;
+        height: 100px;
+        background-color: #0093b7;
+      }
+      
+      .box-flex-two{
+        width: 75px;
+        height: 150px;
+        background-color: #ff9e6b;
+      }
+      
+      .right-box-two{
+        width: 100%;
+        height: 100px;
+        background-color: #8c2727;
+      }
+  
+  .footer{
+    width: 100%;
+  }
+}
+
+
+/*================================
+        479px以下の記述
+ ===============================*/
+@media only screen and (max-width: 479px){
+  body{
+    width: 150px;
+  }
+
+  /*=============
+      header
+  =============*/
+  .header{
+    width: 100%;
+  }
+
+  .main{
+    display: block;
+    width: 100%;
+  }
+
+  .main .left{
+    width: 100%;
+    height: 100px;
+  }
+
+  .main .right{
+    width: 100%;
+    height: auto;
+  }
+
+  .right-box-one{
+    display: block;
+    width: 100%;
+  }
+
+  .right-box-one .box-flex-one{
+  width: 100%;
+ }
+ .box-flex-one .part-one {
+  width: 100%;
+}
+
+
+
+
+
+
+
+
+}
