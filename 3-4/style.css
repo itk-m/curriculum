@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+
+body{
+  color: #fff;
+background-color: gray;
+}
+
+h1{
+  color: #fff;
+  text-align: center;
+  width: 100%;
+  border-bottom: 3px solid #fff;
+}
+
+h2{
+  color: #fff;
+  text-align: center;
+ }
+
+form{
+  color: #fff;
+  display: block;
+  text-align: center;
+
+}
+
+p{
+  color: #fff;
+  text-align: center;
+}
+
+
+.question_base{
+  margin-top: 150px;
+}
