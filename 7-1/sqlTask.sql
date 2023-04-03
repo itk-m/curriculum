@@ -17,3 +17,7 @@ INSERT INTO store_table
 (goods_code , goods_name , price , update_day)
 VALUES
 ("M001" , "マフラー" , 4500 , "2023-4-3");
+
+---------問⑦-----
+UPDATE stock_table set quantity = 10 , update_day = '2023-4-3'
+WHERE store_code = 'S987' AND store_code = 'EA01'
