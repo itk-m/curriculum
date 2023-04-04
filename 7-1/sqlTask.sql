@@ -1,6 +1,6 @@
 
-
-
+---------問①-----
+SELECT store_name AS 店舗名 FROM store_table
 
 ---------問②-----
 SELECT * FROM store_table ORDER BY store_nameabc ASC
