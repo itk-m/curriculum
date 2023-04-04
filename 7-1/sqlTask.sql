@@ -5,6 +5,11 @@
 ---------問②-----
 SELECT * FROM store_table ORDER BY store_nameabc ASC
 
+---------問③-----
+/*在庫テーブルと店舗テーブルを内部結合*/
+SELECT store_table.store_name , stock_table,quantity FROM stock_table 
+INNER JOIN store_table ON stock_table.store_code = store_table.store_code
+
 ---------問④-----
 SELECT AVG(price) FROM goods_table
 
