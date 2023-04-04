@@ -27,3 +27,7 @@ VALUES
 ---------問⑦-----
 UPDATE stock_table set quantity = 10 , update_day = '2023-4-3'
 WHERE store_code = 'S987' AND store_code = 'EA01'
+
+---------問⑧-----
+DELETE FROM stock_table
+WHERE goods_code = 'S987' AND store_code = 'EA01'
