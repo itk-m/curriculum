@@ -1,0 +1,64 @@
+@charset "utf-8";
+
+body{
+  width: 100%;
+  max-width: 100%;
+  white-space: nowrap;
+}
+div.main_div{
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  /*background-color:green;*/
+  padding: 5%;
+}
+.log_title{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*新規ユーザーボタン*/
+    .log_title .users_button{
+      background-color: #91B5F2;
+      display: block;
+      width: 40%;
+    }
+
+    .log_title .users_button a{
+      font-size: 12px;
+      
+      
+    }
+
+
+
+form input{
+  display: block;
+  width: 100%;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1px solid gray;
+  opacity: 0.7;
+   
+}
+
+form input:nth-child(2) ,input:nth-child(3) {
+  margin-top: 20px;
+}
+
+select{
+  width: 100%;
+  height: auto;
+  padding: 1em;
+  margin-bottom: 20px;
+  border: 1px solid gray;
+  opacity: 0.7;
+  border-radius: 10px;
+  
+}
+
+option{
+  
+}
