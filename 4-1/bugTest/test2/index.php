@@ -1,70 +1,56 @@
-
 <?php
-    require_once('db_connect.php');
-    
+//require 'lib/password.php';
+// セッション開始
+//session_start();
+//include_once("dbInfo.php");
+require_once('dbconnect.php');
 
 // エラーメッセージ、登録完了メッセージの初期化
-    $errorMessage ;
-    $signUpMessage ;
-    
-    // ログインボタンが押された場合
-if (isset($_POST["signUp"])) {
-  // 1. ユーザIDの入力チェック
-  if (empty($_POST['username'])) {  // 値が空のとき
-       echo 'ユーザーIDが未入力です。';
-      
-  } else if (empty($_POST["password"])) {
-       echo 'パスワードが未入力です。';
-  } else if (empty($_POST["password2"])) {
-      echo 'パスワードが未入力です。';
-  }//elseif
+$errorMessage = "";
+$signUpMessage = "";
 
-  if(!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["password2"])
-     &&  !empty($_POST["password2"]) && $_POST["password"] === $_POST["password2"] ){
-          // 入力したユーザIDとパスワードを格納
+// セッション開始
+session_start();
+
+// ログインボタンが押された場合
+if (isset($_POST["signUp"])) {
+    // 1. ユーザIDの入力チェック
+    if (empty($_POST['username'])) {  // 値が空のとき
+        $errorMessage = 'ユーザーIDが未入力です。';
+    } else if (empty($_POST["password"])) {
+        $errorMessage = 'パスワードが未入力です。';
+    } else if (empty($_POST["password2"])) {
+        $errorMessage = 'パスワードが未入力です。';
+    }
+
+    if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["password2"]) && $_POST["password"] === $_POST["password2"]) {
+        // 入力したユーザIDとパスワードを格納
         $username = $_POST["username"];
         $password = $_POST["password"];
 
         // 2. ユーザIDとパスワードが入力されていたら認証する
-        
-         $pdo = db_connect();
-        //3.エラー処理
-            try{
-                
-                $sql = "INSERT INTO userData(name, password) VALUES (:username , :password)";
-                $password_hash = password_hash($password, PASSWORD_DEFAULT);
-                $stmt = $pdo->prepare($sql);
-                
-                $stmt->bindParam(':username' , $username);
-                $stmt->bindParam(':password' ,$password_hash);
-                $stmt->execute();
-                $userid = $pdo->lastinsertid();  // 登録した(DB側でauto_incrementした)IDを$useridに入れる
-                 echo '登録が完了しました。あなたの登録IDは ' . $userid . ' です。パスワードは ' . $password . ' です。';
-      
-                  // ログイン時に使用するIDとパスワード
-            }  catch (PDOException $e) {
-                echo 'データベースエラー';
-                // $e->getMessage() でエラー内容を参照可能（デバック時のみ表示）
-                // echo $e->getMessage();
-            } 
+        $dsn = sprintf('mysql: host=%s; dbname=%s; charset=utf8', $db['host'], $db['dbname']);
 
+        // 3. エラー処理
+        try {
+            $pdo = new PDO($dsn, $db['user'], $db['pass'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-  }//全て入力して、一致していたら
-        else if ($_POST["password"] != $_POST["password2"]) {
-             echo 'パスワードに誤りがあります。';
+            $stmt = $pdo->prepare("INSERT INTO userData(name, password) VALUES (?, ?)");
+
+            $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT)));  // パスワードのハッシュ化を行う（今回は文字列のみなのでbindValue(変数の内容が変わらない)を使用せず、直接excuteに渡しても問題ない）
+            $userid = $pdo->lastinsertid();  // 登録した(DB側でauto_incrementした)IDを$useridに入れる
+
+            $signUpMessage = '登録が完了しました。あなたの登録IDは ' . $userid . ' です。パスワードは ' . $password . ' です。';  // ログイン時に使用するIDとパスワード
+        } catch (PDOException $e) {
+            $errorMessage = 'データベースエラー';
+            // $e->getMessage() でエラー内容を参照可能（デバック時のみ表示）
+            // echo $e->getMessage();
+        }
+    } else if ($_POST["password"] != $_POST["password2"]) {
+        $errorMessage = 'パスワードに誤りがあります。';
+    }
 }
-}//if-ボタンが押された時
-
-//$stmt->bindParam(':name' , $username);
-//$stmt->bindParam(':password' , $password);
 ?>
-
-
-
-
-
-
-
 
 <!doctype html>
 <html>
@@ -77,7 +63,8 @@ if (isset($_POST["signUp"])) {
         <form id="loginForm" name="loginForm" action="" method="POST">
             <fieldset>
                 <legend>新規登録フォーム</legend>
-                
+                <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
+                <div><font color="#0000ff"><?php echo htmlspecialchars($signUpMessage, ENT_QUOTES); ?></font></div>
                 <label for="username">ユーザー名</label><input type="text" id="username" name="username" placeholder="ユーザー名を入力" value="<?php if (!empty($_POST["username"])) {
     echo htmlspecialchars($_POST["username"], ENT_QUOTES);
 } ?>">
