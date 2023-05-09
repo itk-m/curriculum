@@ -9,7 +9,6 @@ div.main_div{
   width: 300px;
   height: auto;
   margin: 0 auto;
-  /*background-color:green;*/
   padding: 5%;
 }
 .log_title{
@@ -59,6 +58,3 @@ select{
   
 }
 
-option{
-  
-}

@@ -12,15 +12,15 @@ if(isset($_POST['signUp'])){
 
   if($_POST["name"] && $_POST["password"]){
     //データベース接続
-    $pdo = db_connect();//インスタンスの取得
+    $pdo = db_connect();
     try{
         //name,passインサート
      $sql =  " INSERT INTO users (name , password) VALUES (:name , :password) ";
      // パスワードをハッシュ化
         $password_hash = password_hash($password, PASSWORD_DEFAULT);
      $stmt = $pdo->prepare($sql);
-     $stmt->bindParam(':name', $name);//$nameはPOST送信された値
-     $stmt->bindParam(':password', $password_hash);//$passwordはPOST送信された値
+     $stmt->bindParam(':name', $name);
+     $stmt->bindParam(':password', $password_hash);
      $stmt->execute();
      echo '登録完了致しました';
 

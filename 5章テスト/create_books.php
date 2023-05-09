@@ -63,7 +63,7 @@
     <h2>本 新規登録画面</h2>
     <form method="POST" action="">
         <input type="text" name="title" id="title"  placeholder=" タイトル">
-        <input type="text" name="date" id="date" placeholder="発売日">
+        <input type="date" name="date" id="date" value = "2020/04/01"  >
 
           <h3>在庫数</h3>
           <select  name="stock" id="select" >

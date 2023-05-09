@@ -41,12 +41,12 @@
 
 <div class = "main_div">
     <h1>在庫一覧画面</h1>
-    <button> <a href="create_books.php">新規登録</a> </button>
-    <button class = "log_col" > <a href="logout.php">ログアウト</a> </button>
+    <button onclick = "location.href = 'create_books.php' " style = "color:white;">新規登録</button>
+    <button class = "log_col" onclick = "location.href = 'logout.php' " style = "color:white;" > ログアウト</button>
 
     <table>
   
-    <tr class = "column_title"><!--テーブル横行-->
+    <tr class = "column_title">
       <th>タイトル</th>
       <th>発売日</th>
       <th>在庫数</th>
@@ -59,7 +59,7 @@
             <td><?php echo $row['title'] ;  ?></td>
             <td><?php echo $row['date'] ;  ?></td>
             <td><?php echo $row['stock'] ;  ?></td>
-            <td><button class ="dele_col dele_button"><a href="delete_book.php?id=<?php echo $row['id']; ?>">削除</a></button></td>
+            <td><button class ="dele_col dele_button" onclick = "location.href = 'delete_book.php?id=<?php echo $row['id']; ?>' " style = "color:white;">削除</button></td>
 
         </tr>
       <?php } ?>

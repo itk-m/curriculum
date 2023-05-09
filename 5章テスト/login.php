@@ -29,8 +29,8 @@ session_start();
         $pdo = db_connect();
         try{
           //ログイン名があるかの判定
-          $sql = "SELECT * FROM users WHERE name = :name";//name名で判断して全件取得
-          $stmt = $pdo->prepare($sql);//データベースに処理を実行する準備
+          $sql = "SELECT * FROM users WHERE name = :name";
+          $stmt = $pdo->prepare($sql);
           $stmt->bindParam(':name', $name);
           $stmt->execute();
         }catch(PDOException $e){
@@ -49,7 +49,7 @@ session_start();
             $_SESSION["user_name"] = $row['name'];
             
             // main.phpにリダイレクト
-              header("Location: main.php");//main.phpに強制
+              header("Location: main.php");
               exit;
         } else{
           //パスワードが間違ってた時の処理
@@ -83,11 +83,11 @@ session_start();
       <div class = "main_div" >
         <div class = "log_title">
           <h2>ログイン画面</h2>
-          <button class = "users_button"><a href="./signup.php">新規ユーザー登録</a></button>
+          <button class = "users_button" onclick = "location.href = 'signup.php' " style = "color:white;" >新規ユーザー登録</button>
         </div><!--log_title--->
         <form method="post" action="">
             <input type="text" name="name" size="15" placeholder="ユーザー名" >
-            <input type="text" name="password" size="15" placeholder="パスワード">
+            <input type="password" name="password" size="15" placeholder="パスワード">
             <input class = "submit_button"  type="submit" value="ログイン">
         </form>
         
