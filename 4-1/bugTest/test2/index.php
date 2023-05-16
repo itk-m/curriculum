@@ -37,7 +37,7 @@ if (isset($_POST["signUp"])) {
 
             $stmt = $pdo->prepare("INSERT INTO userData(name, password) VALUES (?, ?)");
 
-            $stmt->execute(array($username, password_hash($password, PASSWORD_DEFAULT)));  // パスワードのハッシュ化を行う（今回は文字列のみなのでbindValue(変数の内容が変わらない)を使用せず、直接excuteに渡しても問題ない）
+            $stmt->execute(array(htmlspecialchars($username,ENT_QUOTES), password_hash($password, PASSWORD_DEFAULT)));  // パスワードのハッシュ化を行う（今回は文字列のみなのでbindValue(変数の内容が変わらない)を使用せず、直接excuteに渡しても問題ない）
             $userid = $pdo->lastinsertid();  // 登録した(DB側でauto_incrementした)IDを$useridに入れる
 
             $signUpMessage = '登録が完了しました。あなたの登録IDは ' . $userid . ' です。パスワードは ' . $password . ' です。';  // ログイン時に使用するIDとパスワード
@@ -65,9 +65,7 @@ if (isset($_POST["signUp"])) {
                 <legend>新規登録フォーム</legend>
                 <div><font color="#ff0000"><?php echo htmlspecialchars($errorMessage, ENT_QUOTES); ?></font></div>
                 <div><font color="#0000ff"><?php echo htmlspecialchars($signUpMessage, ENT_QUOTES); ?></font></div>
-                <label for="username">ユーザー名</label><input type="text" id="username" name="username" placeholder="ユーザー名を入力" value="<?php if (!empty($_POST["username"])) {
-    echo htmlspecialchars($_POST["username"], ENT_QUOTES);
-} ?>">
+                <label for="username">ユーザー名</label><input type="text" id="username" name="username" placeholder="ユーザー名を入力" value="">
                 <br>
                 <label for="password">パスワード</label><input type="password" id="password" name="password" value="" placeholder="パスワードを入力">
                 <br>
