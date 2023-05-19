@@ -25,8 +25,9 @@ if (isset($_POST["signUp"])) {
 
     if (!empty($_POST["username"]) && !empty($_POST["password"]) && !empty($_POST["password2"]) && $_POST["password"] === $_POST["password2"]) {
         // 入力したユーザIDとパスワードを格納
-        $username = $_POST["username"];
-        $password = $_POST["password"];
+        $username = htmlspecialchars($_POST["username"],ENT_QUOTES);
+        $pass =  $_POST["password"];
+        $password =password_hash($pass, PASSWORD_DEFAULT);
 
         // 2. ユーザIDとパスワードが入力されていたら認証する
         $dsn = sprintf('mysql: host=%s; dbname=%s; charset=utf8', $db['host'], $db['dbname']);
@@ -35,16 +36,17 @@ if (isset($_POST["signUp"])) {
         try {
             $pdo = new PDO($dsn, $db['user'], $db['pass'], array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
 
-            $stmt = $pdo->prepare("INSERT INTO userData(name, password) VALUES (?, ?)");
-
-            $stmt->execute(array(htmlspecialchars($username,ENT_QUOTES), password_hash($password, PASSWORD_DEFAULT)));  // パスワードのハッシュ化を行う（今回は文字列のみなのでbindValue(変数の内容が変わらない)を使用せず、直接excuteに渡しても問題ない）
+            $stmt = $pdo->prepare("INSERT INTO userData(name, password) VALUES (:username, :password)");
+            $stmt->bindParam(':username' , $username);
+            $stmt->bindParam('password' , $password);
+            $stmt->execute();  // パスワードのハッシュ化を行う（今回は文字列のみなのでbindValue(変数の内容が変わらない)を使用せず、直接excuteに渡しても問題ない）
             $userid = $pdo->lastinsertid();  // 登録した(DB側でauto_incrementした)IDを$useridに入れる
 
-            $signUpMessage = '登録が完了しました。あなたの登録IDは ' . $userid . ' です。パスワードは ' . $password . ' です。';  // ログイン時に使用するIDとパスワード
+            $signUpMessage = '登録が完了しました。あなたの登録IDは ' . $userid . ' です。パスワードは ' . $pass . ' です。';  // ログイン時に使用するIDとパスワード
         } catch (PDOException $e) {
             $errorMessage = 'データベースエラー';
             // $e->getMessage() でエラー内容を参照可能（デバック時のみ表示）
-            // echo $e->getMessage();
+            echo $e->getMessage();
         }
     } else if ($_POST["password"] != $_POST["password2"]) {
         $errorMessage = 'パスワードに誤りがあります。';
