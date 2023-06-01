@@ -20,5 +20,11 @@ class Posts extends Model
 
         'body' => 'required',
     ];
-}
 
+
+    //Userテーブルからレコードを取得
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
+}

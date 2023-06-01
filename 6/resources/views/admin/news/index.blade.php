@@ -9,9 +9,7 @@
     @foreach($posts as $post)
     <div class="post_box">
         <div class="post_heading">
-            <h3>
-                {{ $post->user_id }}
-            </h3>
+            <h3>{{ $post->User->name }}</h3>
             <time>{{ $post->created_at }}</time>
         </div>
         <div class="post_body">

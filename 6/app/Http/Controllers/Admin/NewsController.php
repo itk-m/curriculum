@@ -49,9 +49,10 @@ class NewsController extends Controller
    */
   public function show()
   {
+    //関連するデータを全て取得
+    $users = Posts::with('User')->get();
     $posts = Posts::orderBy('created_at', 'desc')->get();
-
-    return view('admin.news.index', ['posts' => $posts]);
+    return view('admin.news.index', ['posts' => $posts], compact('users'));
   }
 
 
