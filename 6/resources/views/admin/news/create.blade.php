@@ -27,7 +27,7 @@
                     @endif
 
                     <div class="card-body">
-                        <input name="body" type="text" class="form-control" Placeholder="いまどうしてる" maxlength="255">
+                        <input name="body" type="text" class="form-control" Placeholder="いまどうしてる">
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary mt-2 text-center px-5 py-2">つぶやく</button>
                         </div>

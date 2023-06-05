@@ -18,7 +18,8 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     //ログイン成功時の画面の遷移先
-     public const HOME = '/admin/news/create';
+    public const HOME = '/admin/news/index';
+
 
     /**
      * Define your route model bindings, pattern filters, etc.

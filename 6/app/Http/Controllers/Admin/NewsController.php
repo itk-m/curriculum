@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use env;
 
 //Laravelの認証システムの機能
 use Illuminate\Support\Facades\Auth;
@@ -24,24 +25,24 @@ class NewsController extends Controller
   {
 
     // Varidationを行う
-    $this->validate($request, Posts::$rules);
+    $rules = [
+      'body' => ['required', 'string', 'max:255']
+    ];
+    $this->validate($request, $rules);
     //App\Models\Postsクラスをインスタンス化
     $posts = new Posts;
     //formから送信された入力値を全て取得する
     $form = $request->all();
-
     if (Auth::check()) {
       $posts->user_id = Auth::id();
       // 現在ログインしているuser_idをデータベースに保存する処理
     }
-
     // データベースに保存する
     $posts->fill($form);
     $posts->save();
     // admin/news/createにリダイレクトする
     return redirect('admin/news/index');
   }
-
   //リダイレクト後の処理
   /**
    * Summary of show

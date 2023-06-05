@@ -15,9 +15,13 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+Route::get('/login', function () {
+    return view('login');
 });
+
+Auth::routes();
+
 //http://XXXXXX.jp/admin/を生成し、http://XXXXXX.jp/admin/news/createにアクセスがきたら、[NewsController::class,'add'に渡す
 Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('news/create', [NewsController::class, 'add']);
@@ -25,12 +29,3 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('news/index', [NewsController::class, 'show']);
     Route::get('news/delete', [NewsController::class, 'delete']);
 });
-
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
