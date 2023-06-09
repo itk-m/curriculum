@@ -37,10 +37,12 @@ public class EmployeeController extends HttpServlet {
  
   // 問③ EmployeeBeanに、EmployeeServiceよりsearch関数を呼び出し、返り値を格納する。
  		//検索された従業員の名前が格納されている。
- 		EmployeeBean result = emService.search(id, password);
+ 		 EmployeeBean employeeBean = new EmployeeBean();
+ 		 //EmployeeService が仕事を開始する
+ 		employeeBean = emService.search(id, password);
   // 問④ nullの部分に適切な引数をセットする。
  		//後続のjspファイルで参照出来るようになる。
- 		request.setAttribute("EmployeeBean" , result);
+ 		request.setAttribute("EmployeeBean" , employeeBean);
  
  } catch (Exception e) {
  e.printStackTrace();
